@@ -8,9 +8,10 @@ const {data,errors}:any=await supabase.from('Post') .select("*");
 <Layout title="Welcome to Astro.">
 		{
 			data.map((post:any)=><div >
-				<img src={post.image}/>
-				
-				{post.title}</div>)
+				<img style="width: 100px;" src={post.image}/>
+
+				<h2>
+					{post.title}</h2></div>)
 		}
 </Layout>
 
