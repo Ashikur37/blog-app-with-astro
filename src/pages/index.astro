@@ -1,9 +1,13 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
-import {PrismaClient} from '@prisma/client'
-const prisma = new PrismaClient()
-let posts=await prisma.post.findMany();
+// import {PrismaClient} from '@prisma/client'
+// const prisma = new PrismaClient()
+let posts=[
+	{
+		title:"hello world"
+	}
+];
 ---
 
 <Layout title="Welcome to Astro.">
