@@ -11,11 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^5.0.0",
     "@prisma/client": "^4.9.0",
-    "astro": "^1.9.0"
+    "astro": "^1.7.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
-    "prisma": "^4.9.0"
+    "prisma": "^4.9.0",
+    "wrangler": "^2.8.0"
   }
 }
