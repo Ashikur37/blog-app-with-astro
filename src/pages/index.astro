@@ -1,18 +1,13 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
-// import {PrismaClient} from '@prisma/client'
-// const prisma = new PrismaClient()
-let posts=[
-	{
-		title:"hello world"
-	}
-];
+import { supabase } from "../../utils/supabase";
+const {data,errors}:any=await supabase.from('Post') .select("*");
 ---
 
 <Layout title="Welcome to Astro.">
 		{
-			posts.map(post=><div >{post.title}</div>)
+			data.map((post:any)=><div >{post.title}</div>)
 		}
 </Layout>
 
