@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {PrismaClient} from '@prisma/client'
+const prisma = new PrismaClient()
+let posts=await prisma.post.findMany();
+---
+
+<Layout title="Welcome to Astro.">
+		{
+			posts.map(post=><div >{post.title}</div>)
+		}
+</Layout>
+
