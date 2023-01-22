@@ -12,8 +12,9 @@ interface Props {
   width: string;
   height: string;
   alt: string;
+  className:string;
 }
-const { src, width,height,alt } = Astro.props;
+const { src, width,height,alt,className } = Astro.props;
 let cldSrc = cld.image(src)
                 .format('auto')
                 .delivery(Delivery.quality("auto"))
@@ -24,4 +25,4 @@ if ( src.startsWith('https://')) {
 }
 ---
 
-<img src={cldSrc.toURL()} loading="lazy" width={width} height={height} alt={alt} />
+<img src={cldSrc.toURL()} loading="lazy" width={width} height={height} alt={alt}  class={className}/>
