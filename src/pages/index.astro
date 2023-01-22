@@ -2,13 +2,19 @@
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import { supabase } from "../../utils/supabase";
+import Button from '../components/Button.astro';
+import Title from '../components/Title';
+import CldImage from '../components/CldImage.astro';
 const {data,errors}:any=await supabase.from('Post') .select("*");
 ---
 
 <Layout title="Welcome to Astro.">
+	<Button/>
+	<Title />
 		{
 			data.map((post:any)=><div >
-				<img style="width: 100px;" src={post.image}/>
+				
+				<CldImage src={post.image} height="100" width="100" alt="post"/>
 
 				<h2>
 					{post.title}</h2></div>)
