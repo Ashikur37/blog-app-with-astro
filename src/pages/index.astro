@@ -6,11 +6,12 @@ import { supabase } from "../../utils/supabase";
 import Button from '../components/Button.astro';
 import Title from '../components/Title';
 import CldImage from '../components/CldImage.astro';
+import CloudImage from '../components/CloudImage.astro';
 const {data,errors}:any=await supabase.from('Post') .select("*");
+
 ---
 
 <Layout title="Think from coder's sight">
-	<img src="http://localhost:3000/image"/>
 	<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
 		{data.map((post:any)=>
 			<a href={`/${post.slug}`}>
@@ -31,9 +32,10 @@ const {data,errors}:any=await supabase.from('Post') .select("*");
 			</div>
 			<div class="flex items-center">
 			
-			<CldImage className="w-10 h-10 rounded-full mr-4" src={post.image} height="100" width="100" alt={post.title}/>
+			<CloudImage className="w-30 h-30 rounded-full mr-4" href={ post.image} height="150" width="150" alt={post.title}/>
+			
 			  <div class="text-sm">
-				<p class="text-gray-900 leading-none">John Smith</p>
+				<p class="text-gray-900 leading-none">{ post.image}</p>
 				<p class="text-gray-600">Aug 18</p>
 			  </div>
 			</div>

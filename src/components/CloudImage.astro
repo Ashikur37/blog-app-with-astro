@@ -1,0 +1,12 @@
+---
+export interface Props {
+	href: string;
+    width:string;
+    height:string;
+    alt:string;
+    className:string;
+}
+
+const { href,width,height,alt,className } = Astro.props;
+---
+<img class={className} src={`/images/${width}/${height}/${href.split("/dxlmkfscm/image/")[1]}`} alt={alt}/>
