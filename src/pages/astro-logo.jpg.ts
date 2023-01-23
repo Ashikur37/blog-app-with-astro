@@ -1,7 +1,7 @@
 export async function get({ params, request }:any) {
         return {
       body: "ok",
-      // encoding: 'binary',
+      encoding: 'binary',
     };
   // const res=await fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg');
   // const blob= await res.blob();
