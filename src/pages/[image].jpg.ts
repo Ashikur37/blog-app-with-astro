@@ -4,7 +4,7 @@ export async function get({ params, request }:any) {
     return new Response(blob,
       
       { status: 200,headers:{
-      'cache-control':'public, max-age=86400, stale-while-revalidate=604800'
+      cacheControl:'public, max-age=86400, stale-while-revalidate=604800'
     } });
 }
 //https://res.cloudinary.com/dxlmkfscm/image/upload/v1674393390/images/mjplseelncodaqrhoqar.jpg
