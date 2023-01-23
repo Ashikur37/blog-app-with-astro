@@ -1,14 +1,11 @@
 export async function get({ params, request }:any) {
-        return {
-      body: "ok",
+  const res=await fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg');
+  // const blob= await res.blob();
+  // let objectURL = URL.createObjectURL(blob);
+      return {
+      body: "blob",
       encoding: 'binary',
     };
-  // const res=await fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg');
-  // const blob= await res.blob();
-  //     return {
-  //     body: blob,
-  //     encoding: 'binary',
-  //   };
 //   fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
 //   .then(res => res.blob()) // Gets the response and returns it as a blob
 //   .then(blob => {
