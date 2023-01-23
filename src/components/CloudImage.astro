@@ -9,4 +9,4 @@ export interface Props {
 
 const { href,width,height,alt,className } = Astro.props;
 ---
-<img class={className} src={`/images/${width}/${height}/${href.split("/dxlmkfscm/image/")[1]}`} alt={alt}/>
+<img loading="lazy" class={className} src={`/images/${width}/${height}/${href.split("/dxlmkfscm/image/")[1]}`} alt={alt}/>
