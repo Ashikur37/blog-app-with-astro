@@ -1,9 +1,9 @@
 export async function get({ params, request }:any) {
   const res=await fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg');
-  // const blob= await res.blob();
+  const blob= await res.blob();
   // let objectURL = URL.createObjectURL(blob);
       return {
-      body: "blob",
+      body: "blob52",
       encoding: 'binary',
     };
 //   fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
