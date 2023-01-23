@@ -3,7 +3,7 @@ export async function get({ params, request }:any) {
   const blob= await res.blob();
   // let objectURL = URL.createObjectURL(blob);
       return {
-      body: "blob52",
+      body: blob,
       encoding: 'binary',
     };
 //   fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
