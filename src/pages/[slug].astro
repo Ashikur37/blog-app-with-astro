@@ -14,7 +14,6 @@ export async function getStaticPaths() {
 }
 const {data,errors}:any=await supabase.from('Post').select("*").eq('slug',slug);
 const post=data[0];
-console.log(post);
 ---
 <div>
     {
