@@ -2,7 +2,7 @@ function x() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve('done!');
-      
+
     },7000);
   });
 }
@@ -14,7 +14,7 @@ export async function get({ params, request }:any) {
     const result = await x();
     // setTimeout(function(){
       return new Response(blob, { status: 200,headers:{
-        "Cache-Control": "public, max-age=86400 stale-while-revalidate=604800",
+        "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
         "content-type": "image/jpeg"
       }  });
     // },5000)
