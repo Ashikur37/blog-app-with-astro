@@ -2,6 +2,7 @@ function x() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve('done!');
+      
     },7000);
   });
 }
