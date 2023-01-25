@@ -1,5 +1,5 @@
 ---
-export const prerender = true;
+// export const prerender = true;
 Astro.response.headers.set(    'cache-control',    'public, max-age=86400, stale-while-revalidate=604800',);
 import Layout from '../layouts/Layout.astro';
 import { supabase } from "../../utils/supabase";
