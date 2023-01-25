@@ -11,7 +11,7 @@ const runtime=getRuntime(Astro.request);
 //@ts-ignore
 // const task =  runtime.env.TODO_LIST.get("Task:123");
 
-	const {data,errors}:any=await supabase.from('Post') .select("*");
+	const {data,errors}:any=await supabase.from('Post') .select(`title,description,image,slug`);
 	//@ts-ignore
 	await	runtime.env.test.put('home_posts',JSON.stringify(data));
 
