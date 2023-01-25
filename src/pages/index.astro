@@ -29,7 +29,8 @@ if(homePosts==null){
 
 <Layout title="Think from coder's sight">
 	<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
-		{homePosts.map((post:any)=>
+		{JSON.stringify(homePosts)}
+		<!-- {homePosts.map((post:any)=>
 			<a href={`/${post.slug}`}>
 		
 
@@ -61,7 +62,7 @@ if(homePosts==null){
 		</div>	
 			</a>
 			)}
-		
+		 -->
 		
 		
 	  </div>
