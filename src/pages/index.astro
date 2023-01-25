@@ -17,10 +17,10 @@ const runtime=getRuntime(Astro.request);
 // const task =  runtime.env.TODO_LIST.get("Task:123");
 const homePosts = runtime.env.test.get('home_posts');
 const {data,errors}:any=await supabase.from('Post') .select("*");
-if(homePosts==null){
+// if(homePosts==null){
 	//@ts-ignore
 	runtime.env.test.put('home_posts',JSON.stringify(data));
-}
+// }
 // console.log(serverUrl);
 
 ---
