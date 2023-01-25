@@ -4,16 +4,16 @@ import CldImage from "../components/CldImage.astro";
 
 const { slug } = Astro.params;
 
-export async function getStaticPaths() {
-    const {data,errors}:any=await supabase.from('Post') .select("slug");
-  return
-  data.map((post:any)=>(
-  {params: {slug: post.slug}}
-  ))
+// export async function getStaticPaths() {
+//     const {data,errors}:any=await supabase.from('Post') .select("slug");
+//   return
+//   data.map((post:any)=>(
+//   {params: {slug: post.slug}}
+//   ))
   
-}
-const {data,errors}:any=await supabase.from('Post').select("*").eq('slug',slug);
-const post=data[0];
+// }
+const {data,errors}:any=await supabase.from('Post').select("*").eq('slug',slug).single();
+const post=data;
 ---
 <div>
     {
