@@ -15,7 +15,7 @@ import { getRuntime } from "@astrojs/cloudflare/runtime";
 const runtime=getRuntime(Astro.request);
 //@ts-ignore
 // const task =  runtime.env.TODO_LIST.get("Task:123");
-const serverUrl = runtime.env.test;
+const serverUrl = runtime.env.test.get('a');
 // console.log(serverUrl);
 const {data,errors}:any=await supabase.from('Post') .select("*");
 
