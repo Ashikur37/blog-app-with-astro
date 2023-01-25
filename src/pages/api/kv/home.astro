@@ -1,0 +1,24 @@
+---
+// export const prerender = true;
+import { supabase } from "../../../../utils/supabase";
+
+// const serverUrl = import.meta.env.SERVER_URL;
+// console.log(serverUrl)
+// const task = await context.env.TODO_LIST.get("Task:123");
+// const res= await enhancedFetch(Astro.request.url+ 'api/home-data');
+import { getRuntime } from "@astrojs/cloudflare/runtime";
+const runtime=getRuntime(Astro.request);
+//@ts-ignore
+// const task =  runtime.env.TODO_LIST.get("Task:123");
+
+	const {data,errors}:any=await supabase.from('Post') .select("*");
+	//@ts-ignore
+	await	runtime.env.test.put('home_posts',JSON.stringify(data));
+
+
+// console.log(serverUrl);
+
+---
+
+
+
