@@ -11,7 +11,7 @@ export async function get({ params, request }:any) {
     const base="https://res.cloudinary.com/dxlmkfscm/image/";
     const res=await fetch(base+"/fetch/f_auto/q_auto/c_scale,h_"+params.height+",w_"+params.width+"/"+base+params.image+".jpg");
     const blob= await res.blob();
-    const result = await x();
+    // const result = await x();
     // setTimeout(function(){
       return new Response(blob, { status: 200,headers:{
         "Cache-Control": "public, max-age=86400",
