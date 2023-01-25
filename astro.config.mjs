@@ -14,6 +14,11 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    define: {
+      'process.env.MY_SECRET': JSON.stringify(process.env.MY_SECRET),
+    },
+  },
   output: "server",
   adapter: cloudflare()
   // integrations: [prefetch()]

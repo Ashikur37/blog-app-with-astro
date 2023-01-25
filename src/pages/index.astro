@@ -7,6 +7,16 @@ import Button from '../components/Button.astro';
 import Title from '../components/Title';
 import CldImage from '../components/CldImage.astro';
 import CloudImage from '../components/CloudImage.astro';
+// const serverUrl = import.meta.env.SERVER_URL;
+// console.log(serverUrl)
+// const task = await context.env.TODO_LIST.get("Task:123");
+// const res= await enhancedFetch(Astro.request.url+ 'api/home-data');
+import { getRuntime } from "@astrojs/cloudflare/runtime";
+// const runtime=getRuntime(Astro.request);
+//@ts-ignore
+// const task =  runtime.env.TODO_LIST.get("Task:123");
+const serverUrl = import.meta.env.SERVER_URL||"abc";
+// console.log(serverUrl);
 const {data,errors}:any=await supabase.from('Post') .select("*");
 
 ---
@@ -15,6 +25,8 @@ const {data,errors}:any=await supabase.from('Post') .select("*");
 	<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
 		{data.map((post:any)=>
 			<a href={`/${post.slug}`}>
+		{serverUrl}
+
 				<div class=" w-full lg:max-w-full lg:flex">
 		  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/mountain.jpg')" title="Mountain">
 		  </div>
