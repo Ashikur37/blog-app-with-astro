@@ -15,7 +15,8 @@ import { getRuntime } from "@astrojs/cloudflare/runtime";
 const runtime=getRuntime(Astro.request);
 //@ts-ignore
 // const task =  runtime.env.TODO_LIST.get("Task:123");
-let homePosts = JSON.parse(runtime.env.test.get('home_posts'));
+let homePosts =await runtime.env.test.get('home_posts');
+homePosts=JSON.parse(homePosts);
 if(homePosts==null){
 	const {data,errors}:any=await supabase.from('Post') .select("*");
 	//@ts-ignore
@@ -29,8 +30,7 @@ if(homePosts==null){
 
 <Layout title="Think from coder's sight">
 	<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
-		{JSON.stringify(homePosts)}
-		<!-- {homePosts.map((post:any)=>
+		{homePosts.map((post:any)=>
 			<a href={`/${post.slug}`}>
 		
 
@@ -62,7 +62,7 @@ if(homePosts==null){
 		</div>	
 			</a>
 			)}
-		 -->
+		
 		
 		
 	  </div>
