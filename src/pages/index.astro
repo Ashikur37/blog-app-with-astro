@@ -1,70 +1,88 @@
 ---
 // export const prerender = true;
-Astro.response.headers.set(    'cache-control',    'public, max-age=86400, stale-while-revalidate=604800',);
-import Layout from '../layouts/Layout.astro';
+// Astro.response.headers.set(    'cache-control',    'public, max-age=86400, stale-while-revalidate=604800',);
+import Layout from "../layouts/Layout.astro";
 import { supabase } from "../../utils/supabase";
-import Button from '../components/Button.astro';
-import Title from '../components/Title';
-import CldImage from '../components/CldImage.astro';
-import CloudImage from '../components/CloudImage.astro';
+// import Button from '../components/Button.astro';
+// import Title from '../components/Title';
+// import CldImage from '../components/CldImage.astro';
+import CloudImage from "../components/CloudImage.astro";
 // const serverUrl = import.meta.env.SERVER_URL;
 // console.log(serverUrl)
 // const task = await context.env.TODO_LIST.get("Task:123");
 // const res= await enhancedFetch(Astro.request.url+ 'api/home-data');
 import { getRuntime } from "@astrojs/cloudflare/runtime";
-const runtime=getRuntime(Astro.request);
+const runtime = getRuntime(Astro.request);
 //@ts-ignore
 // const task =  runtime.env.TODO_LIST.get("Task:123");
-let homePosts =await runtime.env.test.get('home_posts');
-homePosts=JSON.parse(homePosts);
-if(homePosts==null){
-	const {data,errors}:any=await supabase.from('Post') .select("*");
+let homePosts = await runtime.env.test.get("home_posts");
+
+try {
+	homePosts = JSON.parse(homePosts);
+} catch (e) {}
+if (homePosts == null) {
+	const { data, errors }: any = await supabase.from("Post").select("*");
 	//@ts-ignore
-	await	runtime.env.test.put('home_posts',JSON.stringify(data));
-	homePosts=data;
+	await runtime.env.test.put("home_posts", JSON.stringify(data));
+	homePosts = data;
 }
 
 // console.log(serverUrl);
-
 ---
 
 <Layout title="Think from coder's sight">
-	<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
-		{homePosts.map((post:any)=>
-			<a href={`/${post.slug}`}>
-		
-
-				<div class=" w-full lg:max-w-full lg:flex">
-		  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/mountain.jpg')" title="Mountain">
-		  </div>
-		  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-			<div class="mb-8">
-			  <p class="text-sm text-gray-600 flex items-center">
-				<svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-				  <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-				</svg>
-				Members only
-			  </p>
-			  <div class="text-gray-900 font-bold text-xl mb-2">{post.title}</div>
-			  <p class="text-gray-700 text-base">
-				{post.description}</p>
-			</div>
-			<div class="flex items-center">
-			
-			<CloudImage className="w-30 h-30 rounded-full mr-4" href={ post.image} height="150" width="150" alt={post.title}/>
-			
-			  <div class="text-sm">
-				<p class="text-gray-900 leading-none">{ post.image}</p>
-				<p class="text-gray-600">Aug 18</p>
-			  </div>
-			</div>
-		  </div>
-		</div>	
-			</a>
-			)}
-		
-		
-		
-	  </div>
+	<div
+		class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5"
+	>
+		{
+			homePosts.map((post: any) => (
+				<a href={`/${post.slug}`}>
+					<div class=" w-full lg:max-w-full lg:flex">
+						<div
+							class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+							style="background-image: url('/mountain.jpg')"
+							title="Mountain"
+						></div>
+						<div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+							<div class="mb-8">
+								<p class="text-sm text-gray-600 flex items-center">
+									<svg
+										class="fill-current text-gray-500 w-3 h-3 mr-2"
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 20 20"
+									>
+										<path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+									</svg>
+									Members only
+								</p>
+								<div class="text-gray-900 font-bold text-xl mb-2">
+									{post.title}
+								</div>
+								<p class="text-gray-700 text-base">
+									{post.description}
+								</p>
+							</div>
+							<div class="flex items-center">
+								{post.image && (
+									<CloudImage
+										className="w-30 h-30 rounded-full mr-4"
+										href={post.image}
+										height="150"
+										width="150"
+										alt={post.title}
+									/>
+								)}
+								<div class="text-sm">
+									<p class="text-gray-900 leading-none">
+										{post.image}
+									</p>
+									<p class="text-gray-600">Aug 18</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			))
+		}
+	</div>
 </Layout>
-

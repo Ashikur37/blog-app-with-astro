@@ -1,0 +1,4 @@
+name = "astro-blog"
+compatibility_date = "2023-01-25"
+
+kv_namespaces = [  {  binding = "test", id = "af10337aaca549db8646c48e8091782a", preview_id = "21ed94c6ccdc4258a5c9b8429a90a3e8"  }]

@@ -9,7 +9,7 @@
     "build": "astro build",
     "previews": "astro preview",
     "astro": "astro",
-    "preview": "wrangler pages dev ./dist"
+    "preview": "wrangler pages dev ./dist --kv test"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^6.0.0",
@@ -27,6 +27,7 @@
     "ultrafetch": "^0.4.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20221111.1",
     "@types/node": "^18.11.18",
     "wrangler": "^2.8.0"
   }
