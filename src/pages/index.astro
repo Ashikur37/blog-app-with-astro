@@ -12,30 +12,52 @@ import CloudImage from "../components/CloudImage.astro";
 // const task = await context.env.TODO_LIST.get("Task:123");
 // const res= await enhancedFetch(Astro.request.url+ 'api/home-data');
 import { getRuntime } from "@astrojs/cloudflare/runtime";
-const runtime = getRuntime(Astro.request);
+// const runtime = getRuntime(Astro.request);
 //@ts-ignore
 // const task =  runtime.env.TODO_LIST.get("Task:123");
-let homePosts = await runtime.env.test.get("home_posts");
+// let homePosts = await runtime.env.test.get("home_posts");
 
-try {
-	homePosts = JSON.parse(homePosts);
-} catch (e) {}
-if (homePosts == null) {
-	const { data, errors }: any = await supabase.from("Post").select("*");
+// try {
+// 	homePosts = JSON.parse(homePosts);
+// } catch (e) {}
+// if (homePosts == null) {
+// 	const { data, errors }: any = await supabase.from("Post").select("*");
+// 	//@ts-ignore
+// 	await runtime.env.test.put("home_posts", JSON.stringify(data));
+// 	homePosts = data;
+// }
+
+let response = await fetch('https://coderssight.vercel.app/api/post/list', {
+	// 5.02 
 	//@ts-ignore
-	await runtime.env.test.put("home_posts", JSON.stringify(data));
-	homePosts = data;
-}
+      cf: {
+        // Always cache this fetch regardless of content type
+        // for a max of 5 seconds before revalidating the resource
+        cacheTtl: 500,
+        cacheEverything: true,
+        //Enterprise only feature, see Cache API for other plans
+      },
+    });
+	let res=await response.json();
+
+// homePosts=aw
+// if(!homePosts){
+// 	console.log("i am storing cache")
+// 	const { data, errors }: any = await supabase.from("Post").select("*");
+
+// 	await memoryCache.set('home_posts', JSON.stringify(data), ttl);
+// 	homePosts=data;
+// }
 
 // console.log(serverUrl);
 ---
 
-<Layout title="Think from coder's sight">
+<!-- <Layout title="Think from coder's sight"> -->
 	<div
 		class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5"
 	>
 		{
-			homePosts.map((post: any) => (
+			res.map((post: any) => (
 				<a href={`/${post.slug}`}>
 					<div class=" w-full lg:max-w-full lg:flex">
 						<div
@@ -85,4 +107,4 @@ if (homePosts == null) {
 			))
 		}
 	</div>
-</Layout>
+<!-- </Layout> -->

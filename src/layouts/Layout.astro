@@ -4,14 +4,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-import { caching } from 'cache-manager';
-const memoryCache = await caching('memory', {
-  max: 100,
-  ttl: 10 * 1000 /*milliseconds*/,
-});
-const ttl = 5 * 1000; /*milliseconds*/
-await memoryCache.set('foo', 'bar', ttl);
-const data=await memoryCache.get('foo');
+
 ---
 
 <!DOCTYPE html>
@@ -23,7 +16,7 @@ const data=await memoryCache.get('foo');
 		<title>{title}</title>
 	</head>
 	<body>
-		<a href="/" class="p-5 bg-blue-300">Go to Home {data}</a>
+		<a href="/" class="p-5 bg-blue-300">Go to Home </a>
 
 		<slot />
 	</body>
